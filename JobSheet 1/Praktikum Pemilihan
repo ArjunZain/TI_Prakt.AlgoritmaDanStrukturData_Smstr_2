@@ -2,7 +2,7 @@ Nilai Akhir Mahasiswa
 
 import java.util.Scanner;
 
-public class nilai akhir {
+public class nilaiakhir {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
