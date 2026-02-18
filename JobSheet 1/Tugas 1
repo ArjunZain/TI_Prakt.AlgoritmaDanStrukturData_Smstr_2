@@ -2,7 +2,7 @@ Nama Kota yang Berpasangan Dengan Plat Mobil
 
 import java.util.Scanner;
 
-public class PlatKendaraan {
+public class Platkendaraan {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
