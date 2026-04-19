@@ -2,56 +2,59 @@ package JobSheet5;
 
 class Sorting {
     int[] data;
-    int jmlData;
+    int jumData;
 
-    Sorting(int[] data, int jmlData) {
-        this.data = data;
-        this.jmlData = jmlData;
+    Sorting(int Data[], int jmlDat) {
+        jumData = jmlDat;
+        data=new int[jmlDat];
+        for (int i=0; i<jumData; i++){
+            data[i]= Data[i];
+        }
     }
 
     void bubbleSort() {
-        for (int i = 0; i < jmlData - 1; i++) {
-            for (int j = 0; j < jmlData - i - 1; j++) {
-                if (data[j] > data[j + 1]) {
-                    int tmp = data[j];
-                    data[j] = data[j + 1];
-                    data[j + 1] = tmp;
+        int temp=0;
+        for (int i = 0; i < jumData - 1; i++) {
+            for (int j = 1; j < jumData - i; j++) {
+                if (data[j-1] > data[j]) {
+                    temp = data[j];
+                    data[j] = data[j - 1];
+                    data[j - 1] = temp;
                 }
             }
         }
     }
 
     void tampil() {
-        for (int i = 0; i < jmlData; i++) {
+        for (int i = 0; i < jumData; i++) {
             System.out.print(data[i] + " ");
         }
         System.out.println();
     }
 
     void selectionSort() {
-    for (int i = 0; i < jmlData - 1; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < jmlData; j++) {
-            if (data[j] < data[minIndex]) {
-                minIndex = j;
+    for (int i = 0; i < jumData - 1; i++) {
+        int min= i;
+        for (int j = i + 1; j < jumData; j++) {
+            if (data[j] < data[min]) {
+                min= j;
             }
         }
-        int tmp = data[minIndex];
-        data[minIndex] = data[i];
-        data[i] = tmp;
+        int temp = data[i];
+        data[i] = data[min];
+        data[min] = temp;
     }
     }
 
     void insertionSort() {
-    for (int i = 1; i < jmlData; i++) {
-        int key = data[i];
+    for (int i = 1; i <= data.length-1; i++) {
+        int temp = data[i];
         int j = i - 1;
-
-        while (j >= 0 && data[j] > key) {
+        while (j >= 0 && data[j] > temp) {
             data[j + 1] = data[j];
             j--;
         }
-        data[j + 1] = key;
+        data[j + 1] = temp;
     }
     }
 }
