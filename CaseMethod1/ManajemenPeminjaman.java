@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ManajemenPeminjaman {
     public static void main(String[] args) {
 
-        // ================= DATA =================
+        
         Mahasiswa[] mhs = {
             new Mahasiswa("22001", "Andi", "Teknik Informatika"),
             new Mahasiswa("22002", "Budi", "Teknik Informatika"),
@@ -30,7 +30,7 @@ public class ManajemenPeminjaman {
         Scanner sc = new Scanner(System.in);
         int pilih;
 
-        // ================= MENU =================
+        
         do {
             System.out.println("\n===== MENU =====");
             System.out.println("1. Tampil Mahasiswa & Buku");
@@ -38,6 +38,7 @@ public class ManajemenPeminjaman {
             System.out.println("3. Hitung Denda");
             System.out.println("4. Sorting Denda (DESC)");
             System.out.println("5. Cari berdasarkan NIM");
+            System.out.println("6. Cari berdasarkan NAMA");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilih = sc.nextInt();
@@ -57,16 +58,12 @@ public class ManajemenPeminjaman {
                     break;
 
                 case 2:
-    System.out.println("\nData Peminjaman:");
-    for (Peminjaman p : pinjam) {
-        System.out.println(
-            p.mhs.nim + " | " +
-            p.mhs.nama + " | " +
-            p.buku.judul + " | " +
-            p.lamaPinjam + " hari"
-        );
-    }
-    break;
+            System.out.println("\nData Peminjaman:");
+            for (Peminjaman p : pinjam) {
+                System.out.println(
+                    p.mhs.nim + " | " + p.mhs.nama + " | " + p.buku.judul + " | " + p.lamaPinjam + " hari");
+            }
+            break;
 
                 case 3:
     System.out.println("\nPerhitungan Denda:");
@@ -82,7 +79,7 @@ public class ManajemenPeminjaman {
     break;
 
                 case 4:
-                    // SORTING (Bubble Sort DESC)
+                
                     for (int i = 0; i < pinjam.length - 1; i++) {
                         for (int j = 0; j < pinjam.length - i - 1; j++) {
                             if (pinjam[j].denda < pinjam[j + 1].denda) {
@@ -116,6 +113,24 @@ public class ManajemenPeminjaman {
                         System.out.println("Data tidak ditemukan!");
                     }
                     break;
+
+                // Modifikasi B3
+                case 6:
+                    System.out.print("Masukkan nama: ");
+                    String cariNama = sc.next();
+                    boolean ketemuNama = false;
+
+                    for (Peminjaman p : pinjam) {
+                    if (p.mhs.nama.equalsIgnoreCase(cariNama)) {
+                    p.tampil();
+                    ketemuNama = true;
+        }
+    }
+
+    if (!ketemuNama) {
+        System.out.println("Data tidak ditemukan!");
+    }
+    break;
             }
 
         } while (pilih != 0);
